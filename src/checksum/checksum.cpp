@@ -111,20 +111,20 @@ bool Checksum::none(const path &filepath, string *givenChecksum) {
 //computes checksum based on the algorithm specified in the config
 bool Checksum::compute_checksum(const path &filepath, string *givenChecksum) {
     Algorithm algo = config->get_algorithm();
-    switch (algo) {
-        case Algorithm::MD5:
-            return compute_checksum_md(filepath, givenChecksum);
-        case Algorithm::SHA256:
+    /*switch (algo) {*/
+    /*    case Algorithm::MD5:*/
+            /*return compute_checksum_md(filepath, givenChecksum);*/
+        /*case Algorithm::SHA256:*/
             return compute_checksum_sha(filepath, givenChecksum);
-        default:
-            return none(filepath, givenChecksum);
-    }
+    /*    default:*/
+    /*        return none(filepath, givenChecksum);*/
+    /*}*/
 }
 
 //function to compare a given checksum with the computed SHA-256 checksum of a file
 bool Checksum::compare_checksum(const path &filepath, const string *givenChecksum) {
     string computedChecksum;
-    return compute_checksum_sha(filepath, &computedChecksum) && computedChecksum == *givenChecksum;
+    return compute_checksum(filepath, &computedChecksum) && computedChecksum == *givenChecksum;
 }
 
 Checksum::~Checksum() {}

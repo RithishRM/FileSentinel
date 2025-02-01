@@ -6,7 +6,7 @@ files:
 
 interval:
   # Time interval (in seconds) for checking file changes
-  check_interval: 10
+  check_interval: 5
 
 notifications:
   # Enable or disable notifications on file change
